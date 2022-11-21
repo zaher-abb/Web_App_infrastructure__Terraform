@@ -2,10 +2,9 @@ provider "aws" {
   region = var.region
 }
 resource "aws_instance" "test" {
-  ami           = var.ec2_ami
-  instance_type = var.ec2_instance_type
+  ami                    = var.ec2_ami
+  instance_type          = var.ec2_instance_type
   vpc_security_group_ids = [aws_security_group.security_group.id]
-
 }
 
 resource "aws_vpc" "vpc" {
@@ -28,11 +27,11 @@ resource "aws_internet_gateway" "internet_gateway" {
 data "aws_availability_zones" "available_zones" {}
 
 resource "aws_subnet" "public_subnet_1" {
-  vpc_id     = aws_vpc.vpc.id
-  cidr_block = var.public_subnet_1_cb
-  availability_zone = data.aws_availability_zones.available_zones.names[1]
+  vpc_id                  = aws_vpc.vpc.id
+  cidr_block              = var.public_subnet_1_cb
+  availability_zone       = data.aws_availability_zones.available_zones.names[1]
   map_public_ip_on_launch = true
-  tags = {
+  tags                    = {
     Name = "subnet_1"
   }
 }
@@ -55,7 +54,7 @@ resource "aws_route_table" "route_table" {
 }
 
 resource "aws_route_table_association" "rt_associate_public" {
-  subnet_id = aws_subnet.public_subnet_1.id
+  subnet_id      = aws_subnet.public_subnet_1.id
   route_table_id = aws_route_table.route_table.id
 }
 
@@ -65,25 +64,25 @@ resource "aws_security_group" "security_group" {
   vpc_id      = aws_vpc.vpc.id
 
   ingress {
-    description      = "TLS from VPC"
-    from_port        = 22
-    to_port          = 22
-    protocol         = "tcp"
-    cidr_blocks      = ["89.247.164.87/32"]
+    description = "TLS from VPC"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["89.247.164.87/32"]
   }
   ingress {
-    description      = "HTTPS from VPC"
-    from_port        = 443
-    to_port          = 443
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
+    description = "HTTPS from VPC"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
-    description      = "HTTP from VPC"
-    from_port        = 80
-    to_port          = 80
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
+    description = "HTTP from VPC"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
