@@ -5,7 +5,11 @@ resource "aws_instance" "test" {
   ami                    = var.ec2_ami
   instance_type          = var.ec2_instance_type
   vpc_security_group_ids = [aws_security_group.security_group.id]
+  subnet_id = aws_subnet.public_subnet_1.id
+  user_data = file("script.sh")
+
 }
+
 
 resource "aws_vpc" "vpc" {
   cidr_block           = var.cider_block
@@ -29,11 +33,12 @@ data "aws_availability_zones" "available_zones" {}
 resource "aws_subnet" "public_subnet_1" {
   vpc_id                  = aws_vpc.vpc.id
   cidr_block              = var.public_subnet_1_cb
-  availability_zone       = data.aws_availability_zones.available_zones.names[1]
+#  availability_zone       = data.aws_availability_zones.available_zones.names[1]
   map_public_ip_on_launch = true
   tags                    = {
     Name = "subnet_1"
   }
+
 }
 #resource "aws_subnet" "private_subnet_1" {
 #  vpc_id     = aws_vpc.vpc.id
