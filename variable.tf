@@ -13,7 +13,6 @@ variable "ec2_instance_type" {
 variable "project_name" {
   default = " CLoud-Website-WV-project"
 }
-
 variable "cider_block" {
   default = "10.0.0.0/16"
 }
@@ -21,6 +20,16 @@ variable "cider_block" {
 variable "public_subnet_1_cb" {
   default = "10.0.0.0/24"
 }
+variable "public_subnet_2_cb" {
+  default = "10.0.1.0/24"
+}
+
+variable "private_subnet_1_cb" {
+  default = "10.0.2.0/24"
+}
 variable "private_subnet_2_cb" {
-  default = "10.0.0.1/24"
+  default = "10.0.3.0/24"
+}
+variable "ssh_MyIP" {
+  default = "89.247.164.71/32"
 }
