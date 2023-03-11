@@ -19,8 +19,6 @@ resource "aws_instance" "ec2_2" {
   key_name               = "MyPemFinalKey"
 }
 
-
-
 #resource "aws_security_group" "elb-security-group" {
 #  name        = "elb security group"
 #  description = "Enable HTTP/HTTPS access on Port 80/443"
