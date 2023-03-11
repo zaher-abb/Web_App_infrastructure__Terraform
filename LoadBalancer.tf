@@ -1,7 +1,7 @@
 
 resource "aws_elb" "loadBalancer" {
   name               = "terraform-elb"
-  availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c"]
+  availability_zones = ["","",""]
 
   access_logs {
     bucket        = aws_s3_bucket.logBucket.id
