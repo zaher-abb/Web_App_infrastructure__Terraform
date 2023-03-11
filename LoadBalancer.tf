@@ -4,8 +4,8 @@ resource "aws_elb" "loadBalancer" {
   availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c"]
 
   access_logs {
-    bucket        = "foo"
-    bucket_prefix = "bar"
+    bucket        = aws_s3_bucket.logBucket.id
+    bucket_prefix = "log"
     interval      = 60
   }
 
