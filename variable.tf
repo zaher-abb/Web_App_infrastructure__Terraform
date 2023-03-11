@@ -42,19 +42,19 @@ variable "subnets_map" {
 }
 
 variable "public_subnet_2_cb" {
-default = "10.0.1.0/24"
+  default = "10.0.1.0/24"
 }
 
 variable "private_subnet_1_cb" {
-default = "10.0.2.0/24"
+  default = "10.0.2.0/24"
 }
 
 variable "private_subnet_2_cb" {
-default = "10.0.3.0/24"
+  default = "10.0.3.0/24"
 }
 
 variable "ssh_MyIP" {
-default = "89.247.164.71/32"
+  default = "89.247.164.71/32"
 }
 
 
