@@ -32,7 +32,7 @@ resource "aws_elb" "loadBalancer" {
     interval            = 30
   }
 
-  instances                   = [aws_instance.ec2_1,aws_instance.ec2_2]
+  instances                   = [aws_instance.ec2_1, aws_instance.ec2_2]
   cross_zone_load_balancing   = true
   idle_timeout                = 400
   connection_draining         = true

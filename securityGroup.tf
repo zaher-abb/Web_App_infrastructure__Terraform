@@ -1,4 +1,3 @@
-
 resource "aws_security_group" "webserver-security-group" {
   name        = "security_group"
   description = "Allow SSH,HTTP,HTTPS inbound traffic"

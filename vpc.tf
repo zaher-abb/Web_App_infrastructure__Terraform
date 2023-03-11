@@ -14,7 +14,7 @@ resource "aws_internet_gateway" "internet_gateway" {
     Name = "vpc-Gateway for ${var.project_name}"
   }
 }
-# use data source to get all availability zones in region
+
 data "aws_availability_zones" "available_zones" {}
 
 resource "aws_subnet" "public_subnet_1" {
